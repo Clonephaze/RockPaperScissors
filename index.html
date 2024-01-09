@@ -1,37 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Rock, Paper, Scissors</title>
-
-  Score
-  Rules
-
-  You Picked
-  The House Picked
-
-  You Win
-  You Lose
-
-  Play Again
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+    <meta name="description" content="Rock, Paper, Scissors">
+    <meta name="darkreader-lock" property="darkreader-lock" content="Disables darkreader from taking over colors">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="stylesheet" href="style.css">
+    <title>Frontend Mentor | Rock, Paper, Scissors</title>
+    <meta name="og:image" content="" />
+    <meta name="og:description" content="Rock, Paper, Scissors. Coded by Clonephaze" />
+    <meta name="og:title" content="Rock, Paper, Scissors" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,400;0,600;1,700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="flex aic column">
+    <header>
+        <div class="title-container flex aic">
+            <img src="images/logo-bonus.svg" alt="Words Saying 'Rock, Paper, Scissors, Lizard, Spock'">
+            <div class="scoreboard flex column aic">
+                <span class="score-text fw-600">SCORE</span>
+                <span class="dark-text fw-700" id="user-score">0</span>
+            </div>
+        </div>
+    </header>
+    <main class="flex aic column">
+        <div class="gameboard" id="gameboard">
+            <div class="token-rock" onclick="console.log('rock')"><img src="images/icon-rock.svg" alt="Rock: a fist"></div>
+            <div class="token-paper" onclick="console.log('paper')"><img src="images/icon-paper.svg" alt="Paper: a flat hand"></div>
+            <div class="token-scissors" onclick="console.log('scissors')"><img src="images/icon-scissors.svg" alt="Scissors: fingers mimicing a pair of scissors"></div>
+            <div class="token-lizard" onclick="console.log('lizard')"><img src=" images/icon-lizard.svg" alt="Lizard: a lizard"></div>
+            <div class="token-spock" onclick="console.log('spock')"><img src="images/icon-spock.svg" alt="Spock: a hand spreading fingers like a spock"></div>
+        </div>
+        <div class="rules-button">
+            <button type="button" aria-haspopup="dialog" id="rules">RULES</button>
+        </div>
+        <div class="rules-menu" data-shown="false">
+            <button type="button" id="close-rules" aria-label="Close Rules">
+                <img src="images/icon-close.svg" alt="close icon">
+            </button>
+            <div class="attribution">
+            Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+            Coded by <a href="https://github.com/Clonephaze">Clonephaze</a>.
+            </div>
 
+        </div>
+        <div class="black-overlay" data-shown="false"></div>
+        </div>
+        
+    </main>
+    <script>
+        const rulesButton = document.getElementById('rules');
+        const rulesMenu = document.querySelector('.rules-menu');
+        const blackOverlay = document.querySelector('.black-overlay');
+        const shown = rulesMenu.getAttribute('data-shown');
+        const closeRules = document.querySelector('#close-rules');
 
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+        rulesButton.addEventListener('click', () => {
+            if (shown === 'false') {
+                rulesMenu.setAttribute('data-shown', 'true');
+                blackOverlay.setAttribute('data-shown', 'true');
+            } else {
+                rulesMenu.setAttribute('data-shown', 'false');
+                blackOverlay.setAttribute('data-shown', 'false');
+            }
+
+            closeRules.addEventListener('click', () => {
+                rulesMenu.setAttribute('data-shown', 'false');
+                blackOverlay.setAttribute('data-shown', 'false');
+            })
+        })
+    </script>
 </body>
 </html>
