@@ -20,9 +20,9 @@ const playAgainBtn = document.getElementById("play-again");
 function doConfetti() {
     //https://confetti.js.org/
     if (window.innerWidth < 768) {
-        const duration = 1.8 * 1000,
+        const duration = 1 * 1000,
         animationEnd = Date.now() + duration,
-        defaults = { startVelocity: 20, spread: 90, ticks: 60, zIndex: 0 };
+        defaults = { startVelocity: 20, spread: 90, ticks: 60, zIndex: 0, gravity: 1.3 };
 
         function randomInRange(min, max) {
         return Math.random() * (max - min) + min;
@@ -52,9 +52,9 @@ function doConfetti() {
         );
         }, 250);
     } else {
-        const duration = 1.8 * 1000,
+        const duration = 1 * 1000,
         animationEnd = Date.now() + duration,
-        defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+        defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0, gravity: 1.3 };
 
         function randomInRange(min, max) {
         return Math.random() * (max - min) + min;
