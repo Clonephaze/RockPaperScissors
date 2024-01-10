@@ -1,0 +1,29 @@
+{
+    "short_name": "RPSLS",
+    "name": "Rock, Paper, Scissors, Lizard, Spock",
+    "icons": [
+        {
+            "src": "images/SiteIcons/RPSIcon-512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "maskable"
+        },
+        {
+            "src": "images/SiteIcons/RPSIcon-256.png",
+            "type": "image/png",
+            "sizes": "256x256",
+            "purpose": "maskable"
+        },
+        {
+            "src": "images/SiteIcons/RPSIcon-vector.svg",
+            "type": "image/svg+xml",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "https://clonephaze.github.io/RockPaperScissors/index.html",
+    "display": "fullscreen",
+    "display_override": ["standalone","window-control-overlay", "minimal-ui"],
+    "orientation": "portrait",
+    "theme_color": "hsl(214, 47%, 23%)",
+    "background_color": "hsl(231, 48%, 17%)"
+}
