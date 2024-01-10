@@ -17,6 +17,75 @@ const computerTokenChoiceImg = document.getElementById("computer-token-img");
 const computerCircles = document.getElementById("computer-circles");
 const playAgainBtn = document.getElementById("play-again");
 
+function doConfetti() {
+    //https://confetti.js.org/
+    if (window.innerWidth < 768) {
+        const duration = 1.8 * 1000,
+        animationEnd = Date.now() + duration,
+        defaults = { startVelocity: 20, spread: 90, ticks: 60, zIndex: 0 };
+
+        function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+        }
+
+        const interval = setInterval(function() {
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+            return clearInterval(interval);
+        }
+
+        const particleCount = 50 * (timeLeft / duration);
+
+        // since particles fall down, start a bit higher than random
+        confetti(
+            Object.assign({}, defaults, {
+            particleCount,
+            origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+            })
+        );
+        confetti(
+            Object.assign({}, defaults, {
+            particleCount,
+            origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+            })
+        );
+        }, 250);
+    } else {
+        const duration = 1.8 * 1000,
+        animationEnd = Date.now() + duration,
+        defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+        function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+        }
+
+        const interval = setInterval(function() {
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+            return clearInterval(interval);
+        }
+
+        const particleCount = 50 * (timeLeft / duration);
+
+        // since particles fall down, start a bit higher than random
+        confetti(
+            Object.assign({}, defaults, {
+            particleCount,
+            origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+            })
+        );
+        confetti(
+            Object.assign({}, defaults, {
+            particleCount,
+            origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+            })
+        );
+        }, 250);
+    }
+}
+
 function computerPlay() {
     const choices = ["rock", "paper", "scissors", "lizard", "spock"];
     const randomChoice = Math.floor(Math.random() * choices.length);
@@ -51,6 +120,7 @@ function userWins() {
             playAgainBtn.removeAttribute("disabled");
 
             setTimeout(() => {
+                doConfetti();
                 userCircles.setAttribute("data-win", true);
             }, 100);
         }, 300);
