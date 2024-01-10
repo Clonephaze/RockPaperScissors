@@ -23,6 +23,14 @@ function computerPlay() {
     return choices[randomChoice];
 }
 
+function disableTokens() {
+    scissors.setAttribute("disabled", true);
+    paper.setAttribute("disabled", true);
+    rock.setAttribute("disabled", true);
+    lizard.setAttribute("disabled", true);
+    spock.setAttribute("disabled", true);
+}
+
 function userWins() {
     userScore++;
     localStorage.setItem('userScore', userScore);
@@ -32,6 +40,7 @@ function userWins() {
 
         setTimeout(() => {
             result.classList.add("scale-in-hor-center");
+            playAgainBtn.removeAttribute("disabled");
 
             setTimeout(() => {
                 userCircles.setAttribute("data-win", true);
@@ -47,6 +56,7 @@ function userTies() {
 
         setTimeout(() => {
             result.classList.add("scale-in-hor-center");
+            playAgainBtn.removeAttribute("disabled");
         }, 300);
     }, 3000);
     console.log("It's a tie!");
@@ -59,6 +69,7 @@ function userLoses() {
 
             setTimeout(() => {
                 result.classList.add("scale-in-hor-center");
+                playAgainBtn.removeAttribute("disabled");
 
                 setTimeout(() => {
                     computerCircles.setAttribute("data-win", true);
@@ -76,6 +87,7 @@ function userLoses() {
         resultTitle.textContent = "YOU LOSE";
         setTimeout(() => {
             result.classList.add("scale-in-hor-center");
+            playAgainBtn.removeAttribute("disabled");
 
             setTimeout(() => {
                 computerCircles.setAttribute("data-win", true);
@@ -88,6 +100,7 @@ function userLoses() {
 }
 
 function choiceMade(choice, computerChoice) {
+    disableTokens();
     gameboard.classList.add("slide-out-elliptic-left-bck");
     resultsBoard.classList.add("puff-in-center")
 

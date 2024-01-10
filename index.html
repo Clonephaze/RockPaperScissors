@@ -29,24 +29,25 @@
     <main class="flex aic column">
     <!-- The Main Gameboard -->
         <div class="gameboard " id="gameboard">
-            <div tabindex="0" aria-label="Scissors" class="token-scissors">
-                <img src="images/icon-scissors.svg" alt="Scissors: fingers mimicing a pair of scissors"></div>
-            <div tabindex="0" aria-label="Paper" class="token-paper">
+            <button type="button" aria-label="Scissors" class="token-scissors">
+                <img src="images/icon-scissors.svg" alt="Scissors: fingers mimicing a pair of scissors">
+            </button>
+            <button type="button" aria-label="Paper" class="token-paper">
                 <img src="images/icon-paper.svg" alt="Paper: a flat hand">
-            </div>
-            <div tabindex="0" aria-label="Rock" class="token-rock">
+            </button>
+            <button type="button" aria-label="Rock" class="token-rock">
                 <img src="images/icon-rock.svg" alt="Rock: a fist">
-            </div>
-            <div tabindex="0" aria-label="Lizard" class="token-lizard">
+            </button>
+            <button type="button" aria-label="Lizard" class="token-lizard">
                 <img src=" images/icon-lizard.svg" alt="Lizard: a lizard">
-            </div>
-            <div tabindex="0" aria-label="Spock" class="token-spock">
+            </button>
+            <button type="button" aria-label="Spock" class="token-spock">
                 <img src="images/icon-spock.svg" alt="Spock: a hand spreading fingers like a spock">
-            </div>
+            </button>
         </div>
         <!-- Rules Popup -->
         <div class="rules-button">
-            <button tabindex="0" type="button" aria-controls="rules-menu" id="rules">RULES</button>
+            <button type="button" aria-controls="rules-menu" id="rules">RULES</button>
         </div>
         <!-- Transparent black background for the rules menu -->
         <div class="black-overlay" data-rules-shown="false"></div>
@@ -94,7 +95,7 @@
             </div>
             <div class="flex column jfc aic" id="result">
                 <h2 class="" id="result-title">YOU WIN</h2>
-                <button id="play-again" class="ff-Barlow fw-600">PLAY AGAIN</button>
+                <button type="button" disabled="true" id="play-again" class="ff-Barlow fw-600">PLAY AGAIN</button>
             </div>
             <div class="flex column aic" id="computer-choice">
                 <h2>THE HOUSE PICKED</h2>

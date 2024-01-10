@@ -97,6 +97,7 @@ body {
 
 [class*="token-"] {
     background: var(--_TokenBG, grey);
+    border: none;
     border-radius: 50%;
     aspect-ratio: 1;
     min-width: 90px;
