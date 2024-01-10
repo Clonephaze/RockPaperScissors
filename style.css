@@ -413,7 +413,7 @@ body {
 
 /****** Utility Classes ******/
 .flex {
-    display: flex;
+    display: flex !important;
 }
 
 .column {
