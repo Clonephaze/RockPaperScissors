@@ -13,7 +13,7 @@
     <meta name="og:title" content="Rock, Paper, Scissors" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,400;0,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body class="flex aic column">
     <header>
@@ -24,53 +24,111 @@
                 <span class="dark-text fw-700" id="user-score">0</span>
             </div>
         </div>
+        <h1 class="sr-only dark-text">A game of Rock, Paper, Scissors, Lizard, Spock, as seen on the tv show "The Big Bang Theory".</h1>
     </header>
     <main class="flex aic column">
-        <div class="gameboard" id="gameboard">
-            <div class="token-rock" onclick="console.log('rock')"><img src="images/icon-rock.svg" alt="Rock: a fist"></div>
-            <div class="token-paper" onclick="console.log('paper')"><img src="images/icon-paper.svg" alt="Paper: a flat hand"></div>
-            <div class="token-scissors" onclick="console.log('scissors')"><img src="images/icon-scissors.svg" alt="Scissors: fingers mimicing a pair of scissors"></div>
-            <div class="token-lizard" onclick="console.log('lizard')"><img src=" images/icon-lizard.svg" alt="Lizard: a lizard"></div>
-            <div class="token-spock" onclick="console.log('spock')"><img src="images/icon-spock.svg" alt="Spock: a hand spreading fingers like a spock"></div>
-        </div>
-        <div class="rules-button">
-            <button type="button" aria-haspopup="dialog" id="rules">RULES</button>
-        </div>
-        <div class="rules-menu" data-shown="false">
-            <button type="button" id="close-rules" aria-label="Close Rules">
-                <img src="images/icon-close.svg" alt="close icon">
-            </button>
-            <div class="attribution">
-            Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-            Coded by <a href="https://github.com/Clonephaze">Clonephaze</a>.
+    <!-- The Main Gameboard -->
+        <div class="gameboard " id="gameboard">
+            <div tabindex="0" aria-label="Scissors" class="token-scissors">
+                <img src="images/icon-scissors.svg" alt="Scissors: fingers mimicing a pair of scissors"></div>
+            <div tabindex="0" aria-label="Paper" class="token-paper">
+                <img src="images/icon-paper.svg" alt="Paper: a flat hand">
             </div>
-
+            <div tabindex="0" aria-label="Rock" class="token-rock">
+                <img src="images/icon-rock.svg" alt="Rock: a fist">
+            </div>
+            <div tabindex="0" aria-label="Lizard" class="token-lizard">
+                <img src=" images/icon-lizard.svg" alt="Lizard: a lizard">
+            </div>
+            <div tabindex="0" aria-label="Spock" class="token-spock">
+                <img src="images/icon-spock.svg" alt="Spock: a hand spreading fingers like a spock">
+            </div>
         </div>
-        <div class="black-overlay" data-shown="false"></div>
+        <!-- Rules Popup -->
+        <div class="rules-button">
+            <button tabindex="0" type="button" aria-controls="rules-menu" id="rules">RULES</button>
         </div>
-        
+        <!-- Transparent black background for the rules menu -->
+        <div class="black-overlay" data-rules-shown="false"></div>
+        <div id="rules-menu" class="rules-menu" data-rules-shown="false">
+            <div class="flex jsb">
+                <h2 class="dark-text fw-700">RULES</h2>
+                <button type="button" id="close-rules" aria-label="Close Rules">
+                    <img src="images/icon-close.svg" alt="close icon">
+                </button>
+            </div>
+            <img src="images/image-rules-bonus.svg" alt="A complex diagram explaining the rules of the game: Rock, Paper, Scissors, Lizard, Spock.">
+            <article class="sr-only dark-text">
+                <p>
+                    Rules for those with Screen Readers:
+                    The game is very much like the classic game of "Rock, articleaper, Scissors", rock beats scissors, scissors beat paper, etcetera. The addition of Lizard and Spock introduce a bit of complexity though, so lets go over what beats what.
+                </p>
+                <ul>
+                    <li>Scissors beats Paper</li>
+                    <li>Paper beats Rock</li>
+                    <li>Rock beats Lizard</li>
+                    <li>Lizard beats Spock</li>
+                    <li>Spock beats Scissors</li>
+                    <li>Scissors beats Lizard</li>
+                    <li>Paper beats Spock</li>
+                    <li>Rock beats Scissors</li>
+                    <li>Lizard beats Paper</li>
+                    <li>Spock beats Rock</li>
+                </ul>
+            </article>
+            <div class="attribution dark-text fw-600">
+                Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+                Coded by <a href="https://github.com/Clonephaze">Clonephaze</a>.
+            </div>
+        </div>
+    <!-- The Results Board -->
+        <div class="results-board flex jfc" id="results-board"> 
+            <div class="flex column aic" id="user-choice">
+                <h2>YOU PICKED</h2>
+                <div class="circle-bg">
+                    <div id="user-token" class="">
+                        <img id="user-token-img" src="" alt="">
+                    </div>
+                    <div id="user-circles" class="winner-circles" data-win="false"></div>
+                </div>
+            </div>
+            <div class="flex column jfc aic" id="result">
+                <h2 class="" id="result-title">YOU WIN</h2>
+                <button id="play-again" class="ff-Barlow fw-600">PLAY AGAIN</button>
+            </div>
+            <div class="flex column aic" id="computer-choice">
+                <h2>THE HOUSE PICKED</h2>
+                <div class="circle-bg" data-win="false">
+                    <div id="computer-token" class="">
+                        <img id="computer-token-img" src="" alt="">
+                    </div>
+                    <div id="computer-circles" class="winner-circles" data-win="false"></div>
+                </div>
+            </div>
+        </div>
     </main>
     <script>
         const rulesButton = document.getElementById('rules');
         const rulesMenu = document.querySelector('.rules-menu');
         const blackOverlay = document.querySelector('.black-overlay');
-        const shown = rulesMenu.getAttribute('data-shown');
+        const shown = rulesMenu.getAttribute('data-rules-shown');
         const closeRules = document.querySelector('#close-rules');
 
         rulesButton.addEventListener('click', () => {
             if (shown === 'false') {
-                rulesMenu.setAttribute('data-shown', 'true');
-                blackOverlay.setAttribute('data-shown', 'true');
+                rulesMenu.setAttribute('data-rules-shown', 'true');
+                blackOverlay.setAttribute('data-rules-shown', 'true');
             } else {
-                rulesMenu.setAttribute('data-shown', 'false');
-                blackOverlay.setAttribute('data-shown', 'false');
+                rulesMenu.setAttribute('data-rules-shown', 'false');
+                blackOverlay.setAttribute('data-rules-shown', 'false');
             }
 
             closeRules.addEventListener('click', () => {
-                rulesMenu.setAttribute('data-shown', 'false');
-                blackOverlay.setAttribute('data-shown', 'false');
+                rulesMenu.setAttribute('data-rules-shown', 'false');
+                blackOverlay.setAttribute('data-rules-shown', 'false');
             })
-        })
+        })      
     </script>
+    <script src="RPSLSgame.js"></script>
 </body>
 </html>

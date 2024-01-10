@@ -1,0 +1,39 @@
+{
+    "gamePieces": [
+        {
+            "name": "rock",
+            "image": "images/icon-rock.svg",
+            "class": "token-rock",
+            "alt": "Rock: a fist",
+            "aria-label": "Rock"
+        },
+        {
+            "name": "paper",
+            "image": "images/icon-paper.svg",
+            "class": "token-paper",
+            "alt": "Paper: a hand",
+            "aria-label": "Paper"
+        },
+        {
+            "name": "scissors",
+            "image": "images/icon-scissors.svg",
+            "class": "token-scissors",
+            "alt": "Scissors: fingers mimicing a pair of scissors",
+            "aria-label": "Scissors"
+        },
+        {
+            "name": "lizard",
+            "image": "images/icon-lizard.svg",
+            "class": "token-lizard",
+            "alt": "Lizard: a hand mimicing a lizard",
+            "aria-label": "Lizard"
+        },
+        {
+            "name": "spock",
+            "image": "images/icon-spock.svg",
+            "class": "token-spock",
+            "alt": "Spock: a hand mimicing a spock",
+            "aria-label": "Spock"
+        }
+    ]
+}
