@@ -24,11 +24,19 @@ function computerPlay() {
 }
 
 function disableTokens() {
-    scissors.setAttribute("disabled", true);
-    paper.setAttribute("disabled", true);
-    rock.setAttribute("disabled", true);
-    lizard.setAttribute("disabled", true);
-    spock.setAttribute("disabled", true);
+    scissors.setAttribute("disabled", "disabled");
+    paper.setAttribute("disabled", "disabled");
+    rock.setAttribute("disabled", "disabled");
+    lizard.setAttribute("disabled", "disabled");
+    spock.setAttribute("disabled", "disabled");
+}
+
+function enableTokens() {
+    scissors.removeAttribute("disabled");
+    paper.removeAttribute("disabled");
+    rock.removeAttribute("disabled");
+    lizard.removeAttribute("disabled");
+    spock.removeAttribute("disabled");
 }
 
 function userWins() {
@@ -47,7 +55,6 @@ function userWins() {
             }, 100);
         }, 300);
     }, 3000);
-    console.log("You win!");
 }
 
 function userTies() {
@@ -59,7 +66,6 @@ function userTies() {
             playAgainBtn.removeAttribute("disabled");
         }, 300);
     }, 3000);
-    console.log("It's a tie!");
 }
 
 function userLoses() {
@@ -76,7 +82,6 @@ function userLoses() {
                 }, 100)
             }, 300)
         }, 3000);
-        console.log("You lose! Score unchanged.");
         return;
     }
 
@@ -94,9 +99,6 @@ function userLoses() {
             }, 100)
         }, 300)
     }, 3000);
-    
-    
-    console.log("You lose!");
 }
 
 function choiceMade(choice, computerChoice) {
@@ -163,7 +165,6 @@ function gameFunction(userChoice) {
         case "rockscissors":
         case "lizardpaper":
         case "spockrock": {
-            console.log(`You chose ${userChoice} and the computer chose ${computerChoice}`);
             choiceMade("win", computerChoice);
         }
         break;
@@ -172,12 +173,10 @@ function gameFunction(userChoice) {
         case "rockrock":
         case "lizardlizard":
         case "spockspock": {
-            console.log(`You and the computer both chose ${userChoice}`);
             choiceMade("tie", computerChoice);
         }
         break;
         default: {
-            console.log(`You chose ${userChoice} and the computer chose ${computerChoice}`);
             choiceMade("lose", computerChoice);
         }
 
@@ -186,6 +185,7 @@ function gameFunction(userChoice) {
 
 function main() {
     document.addEventListener("click", (tokenChoice) => {
+        document.removeEventListener("click", main);
         switch (tokenChoice.target) {
             case scissors: {
                 gameFunction("scissors");
@@ -222,15 +222,35 @@ function playAgain() {
 
         setTimeout(() => {
             gameboard.classList.replace("slide-out-elliptic-left-bck","slide-in-elliptic-right-fwd")
+            enableTokens();
 
-            onanimationend = () => {
-                location.reload();
-            }
-        }, 710);
-    })
+            setTimeout(() => {
+                result.classList.remove("scale-in-hor-center");
+                playAgainBtn.setAttribute("disabled", "disabled");
+ 
+                gameboard.classList.remove("slide-in-elliptic-right-fwd");
+                resultsBoard.classList.remove("slide-out-bck-center");
+ 
+                userTokenChoice.classList.remove("scale-in-center", "token-rock", "token-paper", "token-scissors", "token-lizard", "token-spock");
+                userTokenChoice.removeAttribute("aria-label");
+                userTokenChoiceImg.src = "placeholder.png";
+                userTokenChoiceImg.alt = "Place holder until choices are made";
+ 
+                computerTokenChoice.classList.remove("scale-in-center", "token-rock", "token-paper", "token-scissors", "token-lizard", "token-spock");
+                computerTokenChoice.removeAttribute("aria-label");
+                computerTokenChoiceImg.src = "placeholder.png";
+                computerTokenChoiceImg.alt = "Place holder until choices are made";
+ 
+                userCircles.setAttribute("data-win", false);
+                computerCircles.setAttribute("data-win", false);
+ 
+                resultTitle.textContent = "";
+            }, 700);
+        }, 700);
+    });
 }
 
-playAgain()
+playAgain();
 
 let confirmReset = false;
 
