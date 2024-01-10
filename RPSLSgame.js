@@ -34,9 +34,9 @@ function disableTokens() {
 function userWins() {
     userScore++;
     localStorage.setItem('userScore', userScore);
+    resultTitle.textContent = "YOU WIN";
     setTimeout(() => {
         userScoreCurrent.textContent = userScore;
-        resultTitle.textContent = "YOU WIN";
 
         setTimeout(() => {
             result.classList.add("scale-in-hor-center");
@@ -51,8 +51,8 @@ function userWins() {
 }
 
 function userTies() {
+    resultTitle.textContent = "IT'S A TIE!";
     setTimeout(() => {
-        resultTitle.textContent = "IT'S A TIE!";
 
         setTimeout(() => {
             result.classList.add("scale-in-hor-center");
@@ -64,8 +64,8 @@ function userTies() {
 
 function userLoses() {
     if (userScore === 0) {
+        resultTitle.textContent = "YOU LOSE";
         setTimeout(() => {
-            resultTitle.textContent = "YOU LOSE";
 
             setTimeout(() => {
                 result.classList.add("scale-in-hor-center");
@@ -82,9 +82,9 @@ function userLoses() {
 
     userScore--;
     localStorage.setItem('userScore', userScore);
+    resultTitle.textContent = "YOU LOSE";
     setTimeout(() => {
         userScoreCurrent.textContent = userScore;
-        resultTitle.textContent = "YOU LOSE";
         setTimeout(() => {
             result.classList.add("scale-in-hor-center");
             playAgainBtn.removeAttribute("disabled");
